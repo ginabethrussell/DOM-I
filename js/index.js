@@ -57,3 +57,8 @@ let h1HeaderElement = document.querySelector('h1');
 // Create innerHTML for h1
 let h1Content= siteContent['cta']['h1'].split(' ').join('<br>');
 h1HeaderElement.innerHTML = h1Content;
+
+//Select button
+let buttonEl = document.getElementsByTagName('button')[0];
+//Add text for button from siteContent object
+buttonEl.textContent = siteContent.cta.button;
