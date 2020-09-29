@@ -51,3 +51,7 @@ console.log(navContent);
 navLinks.forEach((link, index) => {
   link.textContent = navContent[`nav-item-${index + 1}`];
 })
+
+let h1HeaderElement = document.querySelector('h1');
+console.log(h1HeaderElement);
+h1HeaderElement.textContent = siteContent['cta']['h1'];
