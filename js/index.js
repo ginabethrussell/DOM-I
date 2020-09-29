@@ -52,6 +52,8 @@ navLinks.forEach((link, index) => {
   link.textContent = navContent[`nav-item-${index + 1}`];
 })
 
+// Select h1 tag
 let h1HeaderElement = document.querySelector('h1');
-console.log(h1HeaderElement);
-h1HeaderElement.textContent = siteContent['cta']['h1'];
+// Create innerHTML for h1
+let h1Content= siteContent['cta']['h1'].split(' ').join('<br>');
+h1HeaderElement.innerHTML = h1Content;
