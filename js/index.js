@@ -46,8 +46,6 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 let navLinks = document.querySelectorAll('a');
 // Create an object with nav element content
 let navContent = siteContent.nav;
-console.log(navLinks);
-console.log(navContent);
 navLinks.forEach((link, index) => {
   link.textContent = navContent[`nav-item-${index + 1}`];
 })
@@ -67,3 +65,33 @@ buttonEl.textContent = siteContent.cta.button;
 let ctaImg = document.getElementById('cta-img');
 // Add img src from siteContent object
 ctaImg.src = siteContent.cta['img-src'];
+
+//Select all the divs inside main content
+let contentText = siteContent['main-content'];
+console.log(contentText);
+
+// pull out the h4 and p elements from each content section in main content
+let mainText = contentText;
+let mainContent = document.querySelectorAll('.main-content div .text-content');
+console.log(mainContent);
+mainContent.forEach((section, index) => {
+  if (index == 0){
+    section.children[0].textContent = mainText['features-h4'];
+    section.children[1].textContent = mainText['features-content'];
+  }else if (index == 1){
+    section.children[0].textContent = mainText['about-h4'];
+    section.children[1].textContent = mainText['about-content'];
+  }else if (index == 2){
+    section.children[0].textContent = mainText['services-h4'];
+    section.children[1].textContent = mainText['services-content'];
+  }else if(index == 3){
+    section.children[0].textContent = mainText['product-h4'];
+    section.children[1].textContent = mainText['product-content'];
+  }else {
+    section.children[0].textContent = mainText['vision-h4'];
+    section.children[1].textContent = mainText['vision-content'];
+  }  
+})
+
+let middleImg = document.getElementById('middle-img');
+middleImg.src = siteContent['main-content']['middle-img-src'];
