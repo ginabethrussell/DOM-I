@@ -62,3 +62,8 @@ h1HeaderElement.innerHTML = h1Content;
 let buttonEl = document.getElementsByTagName('button')[0];
 //Add text for button from siteContent object
 buttonEl.textContent = siteContent.cta.button;
+
+// Select cta section img
+let ctaImg = document.getElementById('cta-img');
+// Add img src from siteContent object
+ctaImg.src = siteContent.cta['img-src'];
