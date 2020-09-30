@@ -49,9 +49,8 @@ let navLinks = document.querySelectorAll('a');
 let navContent = siteContent.nav;
 navLinks.forEach((link, index) => {
   link.textContent = navContent[`nav-item-${index + 1}`];
-
-// Change color of nav links to green
-link.style.color = 'green';
+  // Change color of nav links to green
+  link.style.color = 'green';
 })
 
 // Add two elements to navbar 
@@ -63,13 +62,12 @@ navElement1.href = "#";
 navElement1.textContent = 'Home';
 navElement1.style.color = 'green';
 navBar.prepend(navElement1);
+
 navElement2 = document.createElement('a');
 navElement2.href = "#";
 navElement2.textContent = 'Coming Soon';
 navElement2.style.color = 'green';
 navBar.appendChild(navElement2);
-console.log(navElement1, navElement2);
-
 
 // Select h1 tag
 let h1HeaderElement = document.querySelector('h1');
@@ -87,12 +85,10 @@ let ctaImg = document.getElementById('cta-img');
 // Add img src from siteContent object
 ctaImg.src = siteContent.cta['img-src'];
 
-//Select all the divs inside main content
-let contentText = siteContent['main-content'];
-console.log(contentText);
+//Select all the text for headers and paragraphs inside main content object
+let mainText = siteContent['main-content'];
 
 // pull out the h4 and p elements from each content section in main content
-let mainText = contentText;
 let mainContent = document.querySelectorAll('.main-content div .text-content');
 console.log(mainContent);
 mainContent.forEach((section, index) => {
@@ -114,13 +110,18 @@ mainContent.forEach((section, index) => {
   }  
 })
 
+// select middle image tag and add src attribute
 let middleImg = document.getElementById('middle-img');
 middleImg.src = siteContent['main-content']['middle-img-src'];
 
+// select h4 and add h4 contact header
 let contactHeading = document.querySelector('.contact h4');
 contactHeading.textContent = siteContent.contact['contact-h4'];
+
+// select all p tags in contact section
 let contactInfo = document.querySelectorAll('.contact p');
-console.log(contactInfo);
+
+// add address with <br>, and phone and email to successive p tags from node list
 contactInfo.forEach( (para, index) => {
   if(index == 0){
     const address = siteContent.contact.address.split('Street').join('Street<br>');
@@ -132,5 +133,6 @@ contactInfo.forEach( (para, index) => {
   }
 });
 
+// select p tag in footer and add content copyright
 let footerPara = document.querySelector('footer p');
 footerPara.textContent = siteContent.footer.copyright;
