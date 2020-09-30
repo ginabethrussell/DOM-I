@@ -1,9 +1,8 @@
 // Create timer function
-//  set timeInMs to 0 when page loads
 
-let timeInMs = 0
-// Start timer, save returned id in stopId
-const stopId = setInterval(incrementTime, 10);  
+// When page loads:
+//  set timeInMs to 0 when page loads
+let timeInMs = 0;
 
 // Grab the divs to update from index.html
 let secondTensDiv = document.getElementById('secondTens');
@@ -11,8 +10,13 @@ let secondOnesDiv = document.getElementById('secondOnes');
 let msHundredsDiv = document.getElementById('msHundreds');
 let msTensDiv = document.getElementById('msTens');
 
-// set initial div values to 0
+// set initial display div values to 0
 setInitialDisplay();
+
+// Start timer, save returned id in stopId for clearInterval(stopId)
+const stopId = setInterval(incrementTime, 10);  
+
+// This function sets all initial display values to 0
 function setInitialDisplay(){
     secondTensDiv.textContent = 0;
     secondOnesDiv.textContent = 0;
