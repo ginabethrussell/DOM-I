@@ -41,6 +41,7 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+
 // Add inner text to nav links
 // Create a node list of all nav link tags
 let navLinks = document.querySelectorAll('a');
@@ -48,7 +49,27 @@ let navLinks = document.querySelectorAll('a');
 let navContent = siteContent.nav;
 navLinks.forEach((link, index) => {
   link.textContent = navContent[`nav-item-${index + 1}`];
+
+// Change color of nav links to green
+link.style.color = 'green';
 })
+
+// Add two elements to navbar 
+let navBar = document.getElementsByTagName('nav')[0];
+console.log(navBar);
+
+navElement1 = document.createElement('a');
+navElement1.href = "#";
+navElement1.textContent = 'Home';
+navElement1.style.color = 'green';
+navBar.prepend(navElement1);
+navElement2 = document.createElement('a');
+navElement2.href = "#";
+navElement2.textContent = 'Coming Soon';
+navElement2.style.color = 'green';
+navBar.appendChild(navElement2);
+console.log(navElement1, navElement2);
+
 
 // Select h1 tag
 let h1HeaderElement = document.querySelector('h1');
