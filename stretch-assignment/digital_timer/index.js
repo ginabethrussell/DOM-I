@@ -34,8 +34,10 @@ function incrementTime(){
     }  
 }
 
+// This function updates the html content evert time incrementTime is called
 function updateHtml(timeInMs){
     if (timeInMs >= 10000){
+        // This changes values to red
         setDisplayRed();
         secondTensDiv.textContent = 1;
         secondOnesDiv.textContent = 0;
@@ -51,6 +53,7 @@ function updateHtml(timeInMs){
     };
 }
 
+// This function adds the redDigit class to the display div with the class digits
 function setDisplayRed(){
     let timerDisplayDiv = document.querySelector('.digits');
     timerDisplayDiv.classList.add('redDigit');
