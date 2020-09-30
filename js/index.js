@@ -73,6 +73,7 @@ navBar.appendChild(navElement2);
 let h1HeaderElement = document.querySelector('h1');
 // Create innerHTML for h1
 let h1Content= siteContent['cta']['h1'].split(' ').join('<br>');
+//use innerHTML instead of textContent so browser will recognize nested tags
 h1HeaderElement.innerHTML = h1Content;
 
 //Select button
@@ -88,11 +89,16 @@ ctaImg.src = siteContent.cta['img-src'];
 //Select all the text for headers and paragraphs inside main content object
 let mainText = siteContent['main-content'];
 
-// pull out the h4 and p elements from each content section in main content
+// pull out the divs with the class .text-content that contain h4 and p elements
+// returns a node list with 5 elements 
 let mainContent = document.querySelectorAll('.main-content div .text-content');
 console.log(mainContent);
+
+// use forEach to iterate over the node list
+// use index of node list to match up with the json object contents
 mainContent.forEach((section, index) => {
   if (index == 0){
+    // section.children returns an html collection with the h4 and p elements
     section.children[0].textContent = mainText['features-h4'];
     section.children[1].textContent = mainText['features-content'];
   }else if (index == 1){
@@ -114,17 +120,18 @@ mainContent.forEach((section, index) => {
 let middleImg = document.getElementById('middle-img');
 middleImg.src = siteContent['main-content']['middle-img-src'];
 
-// select h4 and add h4 contact header
+// select contact section h4 and add h4 contact header
 let contactHeading = document.querySelector('.contact h4');
 contactHeading.textContent = siteContent.contact['contact-h4'];
 
-// select all p tags in contact section
+// select all p tags in contact section, returns a node list 
 let contactInfo = document.querySelectorAll('.contact p');
 
 // add address with <br>, and phone and email to successive p tags from node list
 contactInfo.forEach( (para, index) => {
   if(index == 0){
     const address = siteContent.contact.address.split('Street').join('Street<br>');
+    //use innerHTML instead of textContent so browser will recognize nested tags
     para.innerHTML = address;
   }else if (index == 1){
     para.textContent = siteContent.contact.phone;
