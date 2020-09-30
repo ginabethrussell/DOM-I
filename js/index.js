@@ -95,3 +95,21 @@ mainContent.forEach((section, index) => {
 
 let middleImg = document.getElementById('middle-img');
 middleImg.src = siteContent['main-content']['middle-img-src'];
+
+let contactHeading = document.querySelector('.contact h4');
+contactHeading.textContent = siteContent.contact['contact-h4'];
+let contactInfo = document.querySelectorAll('.contact p');
+console.log(contactInfo);
+contactInfo.forEach( (para, index) => {
+  if(index == 0){
+    const address = siteContent.contact.address.split('Street').join('Street<br>');
+    para.innerHTML = address;
+  }else if (index == 1){
+    para.textContent = siteContent.contact.phone;
+  }else {
+    para.textContent = siteContent.contact.email;
+  }
+});
+
+let footerPara = document.querySelector('footer p');
+footerPara.textContent = siteContent.footer.copyright;
