@@ -4,6 +4,7 @@
 //  set timeInMs to 0 when page loads
 let timeInMs = 0;
 let stopId;
+
 // grab the start button and add an event listener for starting the timer
 const startBtn = document.getElementById('start');
 startBtn.addEventListener('click', timer );
@@ -15,6 +16,7 @@ let secondTensDiv = document.getElementById('secondTens');
 let secondOnesDiv = document.getElementById('secondOnes');
 let msHundredsDiv = document.getElementById('msHundreds');
 let msTensDiv = document.getElementById('msTens');
+let timerDisplayDiv = document.querySelector('.digits');
 
 // set initial display div values to 0
 setInitialDisplay();
@@ -25,7 +27,6 @@ function timer(){
     startBtn.disabled = true;
     resetBtn.disabled = false;
 }
-
 
 // This function sets all initial display values to 0
 function setInitialDisplay(){
@@ -70,17 +71,19 @@ function updateHtml(timeInMs){
 }
 
 // This function adds the redDigit class to the display div with the class digits
-function setDisplayRed(){
-    let timerDisplayDiv = document.querySelector('.digits');
+function setDisplayRed(){ 
     timerDisplayDiv.classList.add('redDigit');
 }
 
 // This function resets the page for the timer to work again
 function reset(){
+    // disable reset and enable start
     resetBtn.disabled = true;
     startBtn.disabled = false;
+    // reset display to all zeroes
     setInitialDisplay();
+    // reset variable for time
     timeInMs = 0;
-    let timerDisplayDiv = document.querySelector('.digits');
+    // remove class for red color
     timerDisplayDiv.classList.remove('redDigit');
 }
