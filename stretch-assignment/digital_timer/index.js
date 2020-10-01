@@ -3,6 +3,10 @@
 // When page loads:
 //  set timeInMs to 0 when page loads
 let timeInMs = 0;
+let stopId;
+// grab the start button and add an event listener for starting the timer
+const startBtn = document.getElementById('start');
+startBtn.addEventListener('click', timer );
 
 // Grab the divs to update from index.html
 let secondTensDiv = document.getElementById('secondTens');
@@ -14,7 +18,11 @@ let msTensDiv = document.getElementById('msTens');
 setInitialDisplay();
 
 // Start timer, save returned id in stopId for clearInterval(stopId)
-const stopId = setInterval(incrementTime, 10);  
+function timer(){
+    stopId = setInterval(incrementTime, 10);  
+    startBtn.disabled = true;
+}
+
 
 // This function sets all initial display values to 0
 function setInitialDisplay(){
@@ -47,6 +55,7 @@ function updateHtml(timeInMs){
         secondOnesDiv.textContent = 0;
         msHundredsDiv.textContent = 0;
         msTensDiv.textContent = 0;
+        startBtn.disabled = false;
     }else{
         let secondOnesVal = Math.floor(timeInMs / 1000);
         secondOnesDiv.textContent = `${secondOnesVal}`;
