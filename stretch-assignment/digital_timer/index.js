@@ -7,6 +7,8 @@ let stopId;
 // grab the start button and add an event listener for starting the timer
 const startBtn = document.getElementById('start');
 startBtn.addEventListener('click', timer );
+const resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click', reset);
 
 // Grab the divs to update from index.html
 let secondTensDiv = document.getElementById('secondTens');
@@ -21,6 +23,7 @@ setInitialDisplay();
 function timer(){
     stopId = setInterval(incrementTime, 10);  
     startBtn.disabled = true;
+    resetBtn.disabled = false;
 }
 
 
@@ -55,7 +58,7 @@ function updateHtml(timeInMs){
         secondOnesDiv.textContent = 0;
         msHundredsDiv.textContent = 0;
         msTensDiv.textContent = 0;
-        startBtn.disabled = false;
+        
     }else{
         let secondOnesVal = Math.floor(timeInMs / 1000);
         secondOnesDiv.textContent = `${secondOnesVal}`;
@@ -70,4 +73,14 @@ function updateHtml(timeInMs){
 function setDisplayRed(){
     let timerDisplayDiv = document.querySelector('.digits');
     timerDisplayDiv.classList.add('redDigit');
+}
+
+// This function resets the page for the timer to work again
+function reset(){
+    resetBtn.disabled = true;
+    startBtn.disabled = false;
+    setInitialDisplay();
+    timeInMs = 0;
+    let timerDisplayDiv = document.querySelector('.digits');
+    timerDisplayDiv.classList.remove('redDigit');
 }
